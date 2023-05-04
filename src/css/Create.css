@@ -1,0 +1,48 @@
+.create-page form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+}
+
+.create-page label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.create-page input[type="text"],
+.create-page input[type="number"],
+.create-page textarea {
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.create-page input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.create-page input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.create-page button {
+  background-color: #008CBA;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.create-page button:hover {
+  background-color: #0077A3;
+}
