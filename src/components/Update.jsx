@@ -1,107 +1,87 @@
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+if (window?.location.pathname === "/") require("../css/App.css");
 
-// function Update() {
-//   const [orders, setOrders] = useState([]);
+function Update({ handleUpdate }) {
+  const [painter, setPainter] = useState("");
+  const [imagename, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [image, setImage] = useState("");
+  const [imageDesc, setImageDesc] = useState("");
+  //seems like usecontext but it works perfectly but its hard to know it
+  const navigate = useNavigate();
+  const location = useLocation();
+  const name = location.state.formdef_data;
+  const obj = {
+    painter: painter,
+    imagename: imagename,
+    imageDesc: imageDesc,
+    price: price,
+    image: image,
+  };
+  console.log(name);
 
-//   useEffect(() => {
-//     // Fetch the orders from the server
-//     axios
-//       .get("http://localhost:5000/orders")
-//       .then((res) => setOrders(res.data))
-//       .catch((err) => console.log(err));
-//   }, []);
+  const handleUpdateSubmit = (e) => {
+    e.preventDefault();
+    handleUpdate(name, obj);
+    navigate("/All");
+  };
 
-//   // Handle updating an order
-//   const handleUpdate = (id, data) => {
-//     axios
-//       .put(`http://localhost:5000/orders/${id}`, data)
-//       .then((res) => console.log(`Updated order ${id}`))
-//       .catch((err) => console.log(err));
-//   };
+  return (
+    <div>
+      <form>
+        <label htmlFor="painter-name">Painter Name:</label>
+        <input
+          type="text"
+          id="painter-name"
+          name="painter"
+          required
+          onChange={(event) => setPainter(event.target.value)}
+        />
 
-//   // Handle deleting an order
-//   const handleDelete = (id) => {
-//     axios
-//       .delete(`http://localhost:5000/orders/${id}`)
-//       .then((res) => {
-//         console.log(`Deleted order ${id}`);
-//         // Remove the deleted order from the local state
-//         setOrders(orders.filter((order) => order.id !== id));
-//       })
-//       .catch((err) => console.log(err));
-//   };
+        <label htmlFor="painting-name">Painting Name:</label>
+        <input
+          type="text"
+          id="painting-name"
+          name="imagename"
+          required
+          onChange={(event) => setName(event.target.value)}
+        />
 
-//   //   {view ? (
-//   //     <div>
-//   //       <form onSubmit={handleUpdateSubmit}>
-//   //         <input
-//   //           type="text"
-//   //           onChange={(e) => setPainter(e.target.value)}
-//   //         />
-//   //         <input
-//   //           type="number"
-//   //           onChange={(e) => setPrice(e.target.value)}
-//   //         />
-//   //         <input type="text" onChange={(e) => setImage(e.target.value)} />
-//   //         <input
-//   //           type="text"
-//   //           onChange={(e) => setImageDesc(e.target.value)}
-//   //         />
-//   //         <button type="submit">Update</button>
-//   //         <button onClick={() => setView(false)}>Cancel</button>
-//   //       </form>
-//   //     </div>
-//   //   ) : (
+        <label htmlFor="image-description">Image Description:</label>
+        <textarea
+          id="image-description"
+          name="imageDesc"
+          required
+          value={imageDesc}
+          onChange={(event) => setImageDesc(event.target.value)}
+        />
 
-//   return (
-//     <div>
-//       <h2>Orders</h2>
-//       <table>
-//         <thead>
-//           <tr>
-//             <th>ID</th>
-//             <th>Painter</th>
-//             <th>Image Name</th>
-//             <th>Description</th>
-//             <th>Price</th>
-//             <th>Image URL</th>
-//             <th>Actions</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {orders.map((order) => (
-//             <tr key={order.id}>
-//               <td>{order.id}</td>
-//               <td>{order.painter}</td>
-//               <td>{order.imagename}</td>
-//               <td>{order.imageDesc}</td>
-//               <td>{order.price}</td>
-//               <td>{order.image}</td>
-//               <td>
-//                 <button
-//                   onClick={() =>
-//                     handleUpdate(order.id, { painter: "New Painter Name" })
-//                   }
-//                 >
-//                   Update
-//                 </button>
-//                 <button onClick={() => handleDelete(order.id)}>Delete</button>
-//               </td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </table>
-//     </div>
-//   );
-// }
+        <label htmlFor="price">Price:</label>
+        <input
+          type="number"
+          id="price"
+          name="price"
+          required
+          value={price}
+          onChange={(event) => setPrice(event.target.value)}
+        />
 
-// export default Update;
+        <label htmlFor="image-url">Image URL:</label>
+        <input
+          type="text"
+          id="image-url"
+          name="image"
+          required
+          value={image}
+          onChange={(event) => setImage(event.target.value)}
+        />
 
-import React from "react";
-
-function Update() {
-  return <div>Updated</div>;
+        <input onClick={handleUpdateSubmit} type="submit" value="Submit" />
+      </form>
+    </div>
+  );
 }
 
 export default Update;

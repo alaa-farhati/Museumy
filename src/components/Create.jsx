@@ -30,22 +30,34 @@ function Create() {
       .post("http://localhost:5000/orders", obj)
       .then((res) => {
         console.log(res);
+        navigate("/All");
       })
       .catch((err) => console.log(err));
   };
-  useEffect(() => {
-    if (!isTimeoutSet) {
-      const timeoutId = setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+  const navig = () => {
+    navigate("/All");
 
-      setIsTimeoutSet(true);
+    fetch();
+  };
+  // useEffect(() => {
+  //   if (!isTimeoutSet) {
+  //     const timeoutId = setTimeout(() => {
+  //       window.location.reload();
+  //     }, 1000);
 
-      return () => {
-        clearTimeout(timeoutId);
-      };
-    }
-  }, [isTimeoutSet]);
+  //     setIsTimeoutSet(true);
+
+  //     return () => {
+  //       clearTimeout(timeoutId);
+  //     };
+  //   }
+  // }, [isTimeoutSet]);
+  // window.location.reload();
+  // var div = () => {
+  //   setTimeout(() => {
+  //     window.location.reload();
+  //   }, 1000);
+  // };
 
   return (
     <div className="create-page">
@@ -54,6 +66,7 @@ function Create() {
           Painter Name:
         </label>
         <input
+          required
           type="text"
           id="painter-name"
           name="painter_name"
@@ -63,6 +76,7 @@ function Create() {
 
         <label htmlFor="painting-name">Painting Name:</label>
         <input
+          required
           type="text"
           id="painting-name"
           name="painting_name"
@@ -72,6 +86,7 @@ function Create() {
 
         <label htmlFor="image-description">Image Description:</label>
         <textarea
+          required
           id="image-description"
           name="image_description"
           value={imageDesc}
@@ -80,6 +95,7 @@ function Create() {
 
         <label htmlFor="price">Price:</label>
         <input
+          required
           type="number"
           id="price"
           name="price"
@@ -89,6 +105,7 @@ function Create() {
 
         <label htmlFor="image-url">Image URL:</label>
         <input
+          required
           type="text"
           id="image-url"
           name="image_url"
@@ -96,10 +113,10 @@ function Create() {
           onChange={(event) => setImage(event.target.value)}
         />
 
-        <input id="slc" type="submit" value="Submit" onClick={fetch} />
+        <input required id="slc" type="submit" value="Submit" onClick={navig} />
       </form>
 
-      <button className="btn1" onClick={() => navigate("/")}>
+      <button className="btn1" onClick={fetch}>
         See more
       </button>
     </div>

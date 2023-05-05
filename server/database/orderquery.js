@@ -49,30 +49,6 @@ const deleteOneOrder=(i,callback)=>{
     
 }
 
-
-// const deleteOneOrder = (customerId, password, callback) => {
-//     const verifysql = `SELECT userpassword FROM Customers WHERE id=${customerId}`;
-//     conn.query(verifysql,(succ,err)=>{
-//       if (succ){
-//         callback(null,err);
-//         return;
-//       }
-//       if (succ.length === 0) {
-//         callback(null, `Customer with ID ${customerId} not found`);
-//         return;
-//       }
-//       const storedPassword = succ[0].userpassword;
-//       console.log(storedPassword)
-//       if (password !== storedPassword) {
-//         callback(null, 'Incorrect password');
-//         return;
-//       }
-//       const deleteOrderSql = `DELETE FROM Orders WHERE customer_id=${customerId}`;
-//       conn.query(deleteOrderSql,(ress,er) => {
-//         callback(ress, er);
-//       });
-//     });
-//   };
 module.exports={
     getAllOrders,
     getOneOrder,

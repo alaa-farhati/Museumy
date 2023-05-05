@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Switch } from "react-router-dom";
 import axios from "axios";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import Create from "./components/Create";
 import AllTables from "./components/AllTables";
 import Update from "./components/Update";
+// import Navbar from "./components/Navbar";
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -45,20 +46,20 @@ const App = () => {
     <BrowserRouter>
       <div>
         <Routes>
+          {/* <Navbar />
+          <Switch> */}
           <Route path="/" element={<Login />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/Create" element={<Create />} />
-          <Route path="/update" element={<Update />} />
+          <Route
+            path="/update"
+            element={<Update handleUpdate={handleUpdate} />}
+          />
           <Route
             path="/All"
-            element={
-              <AllTables
-                data={data}
-                handleDelete={handleDelete}
-                handleUpdate={handleUpdate}
-              />
-            }
+            element={<AllTables data={data} handleDelete={handleDelete} />}
           />
+          {/* </Switch> */}
         </Routes>
       </div>
     </BrowserRouter>
