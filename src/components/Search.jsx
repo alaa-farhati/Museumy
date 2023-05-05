@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+if (window?.location.pathname === "/All") require("../css/App.css");
 
 function Search() {
   const [name, setName] = useState("");
@@ -18,7 +19,7 @@ function Search() {
   }, [name]);
 
   return (
-    <div>
+    <div className="search-container">
       <input
         type="text"
         placeholder="Search by image name"
@@ -28,13 +29,24 @@ function Search() {
         {searchedData.map((table) => (
           <li key={table.id}>
             <h1>{table.painter}</h1>
-            <h2>{table.imagename}</h2>
-            <p>{table.price}</p>
+            <h1>{table.imagename}</h1>
+            <img src={table.image} alt={table.name} />
+            <p>
+              {table.price}
+              {" $"}
+            </p>
             <p>{table.imageDesc}</p>
           </li>
         ))}
       </ul>
-      <button onClick={() => navigate("/")}>Go Back</button>
+      <button
+        onClick={() => {
+          navigate("/");
+          window.location.reload();
+        }}
+      >
+        Go Back
+      </button>
     </div>
   );
 }

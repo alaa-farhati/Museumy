@@ -51,7 +51,7 @@ const Login = () => {
             window.location.reload();
           } else {
             console.log("Wrong password");
-            alert("Wrong password");
+            alert("SEE YOUU");
           }
         });
       })

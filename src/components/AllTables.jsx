@@ -25,7 +25,9 @@ function AllTables({ data, handleDelete }) {
             <div>
               <h1>{table.painter}</h1>
               <h2>{table.imagename}</h2>
-              <p>{table.price}</p>
+              <p>
+                {table.price} {" $"}
+              </p>
               <p>{table.imageDesc}</p>
               <img src={table.image} alt={table.name} />
               <button onClick={() => handleDelete(table.imagename)}>
