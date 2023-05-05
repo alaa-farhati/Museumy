@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
-if (window?.location.pathname === "/Create") require("../css/Create.css");
+if (window?.location.pathname === "/Create") require("../css/upd.css");
 
 function Create() {
   const navigate = useNavigate();
@@ -15,7 +14,7 @@ function Create() {
   const [imageDesc, setImageDesc] = useState("");
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState("");
-  const [isTimeoutSet, setIsTimeoutSet] = useState(false);
+
   const obj = {
     id: generateId(),
     painter: painter,
@@ -38,29 +37,15 @@ function Create() {
     navigate("/All");
 
     fetch();
+    window.location.reload();
   };
-  // useEffect(() => {
-  //   if (!isTimeoutSet) {
-  //     const timeoutId = setTimeout(() => {
-  //       window.location.reload();
-  //     }, 1000);
-
-  //     setIsTimeoutSet(true);
-
-  //     return () => {
-  //       clearTimeout(timeoutId);
-  //     };
-  //   }
-  // }, [isTimeoutSet]);
-  // window.location.reload();
-  // var div = () => {
-  //   setTimeout(() => {
-  //     window.location.reload();
-  //   }, 1000);
-  // };
+  const navigBack = () => {
+    navigate("/All");
+    window.location.reload();
+  };
 
   return (
-    <div className="create-page">
+    <div className="updated">
       <form className="form">
         <label className="createLabel" htmlFor="painter-name">
           Painter Name:
@@ -114,11 +99,10 @@ function Create() {
         />
 
         <input required id="slc" type="submit" value="Submit" onClick={navig} />
+        <button className="cancel" onClick={navigBack}>
+          cancel
+        </button>
       </form>
-
-      <button className="btn1" onClick={fetch}>
-        See more
-      </button>
     </div>
   );
 }

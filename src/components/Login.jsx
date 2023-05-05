@@ -31,6 +31,7 @@ const Login = () => {
         .then((res) => {
           console.log(res.data);
           navigate("/Create");
+          window.location.reload();
         })
         .catch((err) => console.log(err));
     }
@@ -47,6 +48,7 @@ const Login = () => {
           if (e.username === username && e.userpassword === password) {
             console.log("Login successful");
             navigate("/Create");
+            window.location.reload();
           } else {
             console.log("Wrong password");
             alert("Wrong password");
@@ -102,6 +104,7 @@ const Login = () => {
   //all end here
   return (
     <div className="form-structor">
+      <h1></h1>
       <div className="signup">
         <h2 className="form-title" id="signup">
           <span>or</span>Sign up

@@ -1,48 +1,54 @@
-.create-page form {
+.cancel{
+  padding: 10px;
+font-size: 16px;
+border-radius: 5px;
+background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUI4zT-HE1bg4BJ1fTMoe0xhmbnEKIMEc-og&usqp=CAU");
+  padding: 10px 20px;
+ 
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+.cancel:hover{
+color: #ed1919;
+}
+.updated {
+  max-width: 400px;
+  margin: 0 auto;
+  }
+  
+  form {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  margin: auto;
-}
-
-.create-page label {
+  gap: 10px;
+  padding: 20px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  }
+  
+  label {
   font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.create-page input[type="text"],
-.create-page input[type="number"],
-.create-page textarea {
-  padding: 8px;
-  margin-bottom: 10px;
+  }
+  
+  input[type="text"],
+  textarea,
+  input[type="number"] {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.create-page input[type="submit"] {
+  }
+  
+  input[type="submit"] {
   background-color: #4CAF50;
   color: white;
-  padding: 12px 20px;
+  padding: 10px 20px;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  margin-top: 10px;
-}
-
-.create-page input[type="submit"]:hover {
-  background-color: #45a049;
-}
-
-.create-page button {
-  background-color: #008CBA;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.create-page button:hover {
-  background-color: #0077A3;
-}
+  transition: background-color 0.3s ease;
+  }
+  
+  input[type="submit"]:hover {
+  background-color: #3e8e41;
+  }

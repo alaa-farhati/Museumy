@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-if (window?.location.pathname === "/") require("../css/App.css");
+if (window?.location.pathname === "/update") require("../css/upd.css");
 
 function Update({ handleUpdate }) {
   const [painter, setPainter] = useState("");
@@ -26,10 +26,15 @@ function Update({ handleUpdate }) {
     e.preventDefault();
     handleUpdate(name, obj);
     navigate("/All");
+    window.location.reload();
+  };
+  const navigBack = () => {
+    navigate("/All");
+    window.location.reload();
   };
 
   return (
-    <div>
+    <div className="updated">
       <form>
         <label htmlFor="painter-name">Painter Name:</label>
         <input
@@ -79,6 +84,9 @@ function Update({ handleUpdate }) {
         />
 
         <input onClick={handleUpdateSubmit} type="submit" value="Submit" />
+        <button className="cancel" onClick={navigBack}>
+          cancel
+        </button>
       </form>
     </div>
   );
